@@ -46,4 +46,7 @@ variable "public_sshkey" {
   default = "/Users/jeff.schmitz/.ssh/id_rsa.pub"
 }
 
+variable "hostfilename" {
+  default = "myserverhostfile.txt"
+}
 
