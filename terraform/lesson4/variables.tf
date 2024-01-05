@@ -4,9 +4,8 @@ variable "region" {
 
 variable "personalip" {}
 
-
-variable "centos_ver" {
-  default = "7"
+variable "ubuntu_ver" {
+  default = "focal-20.04"
 }
 
 variable "aws_vpc_name" {

@@ -1,8 +1,7 @@
 # Create public IPs
 
-
-data "aws_ami" "centos" {
-  owners      = ["679593333241"]
+data "aws_ami" "ubuntu" {
+  owners      = ["aws-marketplace"]
   most_recent = true
 
   filter {
@@ -11,14 +10,14 @@ data "aws_ami" "centos" {
   }
   filter {
     name   = "name"
-    values = ["CentOS-${var.centos_ver}*x86_64*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-${var.ubuntu_ver}-amd64*"]
   }
 
 }
 
 
 resource "aws_instance" "server" {
-  ami           = data.aws_ami.centos.id
+  ami           = data.aws_ami.ubuntu.id
   instance_type = var.aws_instance_size
 
   vpc_security_group_ids      = [aws_security_group.first_sg.id]
@@ -37,7 +36,7 @@ resource "aws_instance" "server" {
     ]
     connection {
       type        = "ssh"
-      user        = "centos"
+      user        = "ubuntu"
       private_key = file("${var.private_sshkey}")
       host        = self.public_ip
     }
