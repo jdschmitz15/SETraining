@@ -54,13 +54,13 @@ resource "null_resource" "hostsfile" {
     }
     
     provisioner "local-exec" {
-    command = "echo mysnc ansible_host=${aws_instance.server.private_ip} ansible_user=centos >> ${var.hostfilename}"
+    command = "echo mysnc ansible_host=${aws_instance.server.private_ip} ansible_user=ubuntu >> ${var.hostfilename}"
     }
     provisioner "local-exec" {
     command = "echo [snc-public] >> ${var.hostfilename}"
     }
     provisioner "local-exec" {
-    command = "echo mysnc-public ansible_host=${aws_instance.server.public_ip} ansible_user=centos >> ${var.hostfilename}"
+    command = "echo mysnc-public ansible_host=${aws_instance.server.public_ip} ansible_user=ubuntu >> ${var.hostfilename}"
     }
     provisioner "local-exec" {
     command = "echo [server:children] >> ${var.hostfilename}"

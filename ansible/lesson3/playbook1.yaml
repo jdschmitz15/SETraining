@@ -1,0 +1,33 @@
+--- # create a directory and copy files over with different permissions and ownership
+- hosts: snc-public
+  gather_facts: yes
+  tasks: 
+
+    - debug:
+        var: service
+
+    - name:  install service 
+      become: yes 
+      ansible.builtin.package:
+        name: "{{ service }}"
+        state: latest
+
+    - name: create myindex.html file
+      become: yes
+      ansible.builtin.file:
+        name: /var/www/html/myindex.html
+        state: touch
+
+    - name: add content to myindex file
+      become: yes
+      ansible.builtin.lineinfile: 
+        line: "{{ inventory_hostname }}"
+        line: "{{ hostvars[inventory_hostname]['ansible_facts'] }}"
+
+        path: /var/www/html/myindex.html/html/myindex.html
+
+    - name: start service that you specify
+      become: yes
+      ansible.builtin.service: 
+        name: "{{ service }}" 
+        state: started  

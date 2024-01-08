@@ -1,0 +1,9 @@
+---
+- hosts: snc-public
+  tasks: 
+
+    - name: debug ansible facts to the screen.
+      ansible.builtin.debug:
+        msg: "{{hostvars}}"
+
+    

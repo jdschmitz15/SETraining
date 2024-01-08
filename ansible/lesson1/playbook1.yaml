@@ -1,0 +1,32 @@
+--- # create a directory and copy files over with different permissions and ownership
+- hosts: snc-public
+  gather_facts: no
+  tasks: 
+
+    - name: Ping my hosts
+      ansible.builtin.ping:
+  
+    - name: create testdir directory  under /home/ubuntu
+      ansible.builtin.file: 
+        path: /home/ubuntu/testdir
+        state: directory
+
+    - name: touch file  under /home/ubuntu/testdir
+      ansible.builtin.file: 
+        path: /home/ubuntu/testdir/touchedfile.txt
+        state: touch
+
+    - name: copy myserverhostfile.txt to /home/ubuntu/testdir
+      ansible.builtin.copy:
+        src: ./myserverhostfile.txt
+        dest: /home/ubuntu/newmyserverhostfile.txt
+
+
+    - name: copy myserverhostfile.txt to /home/ubuntu/testdir as root
+      become: yes  #elevates the user to ROOT. need to make the owner and group root.
+      ansible.builtin.copy:
+        src: ./myserverhostfile.txt
+        dest: /home/ubuntu/rootserverhostfile.txt
+        owner: root
+        group: root
+        mode: '0600'

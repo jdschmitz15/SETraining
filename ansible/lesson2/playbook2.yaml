@@ -1,0 +1,15 @@
+---
+- hosts: snc-public
+  tasks: 
+
+    - name: debug ansible facts to the screen.
+      ansible.builtin.debug:
+        msg: "{{hostvars[inventory_hostname]['ansible_default_ipv4']}}"
+
+    - name: debug ansible facts to the screen.
+      ansible.builtin.debug:
+        msg: "{{hostvars[inventory_hostname].ansible_devices}}."
+
+    - name: debug ansible facts to the screen.
+      ansible.builtin.debug:
+        var: "{{hostvars[inventory_hostname]}}.{{ variable }}"

@@ -29,10 +29,10 @@ variable "username" {
 }
 
 variable "from_port" {
-  default = "8443"
+  default = "80"
 }
 variable "to_port" {
-  default = "8444"
+  default = "80"
 }
 
 variable "aws_instance_size" {
