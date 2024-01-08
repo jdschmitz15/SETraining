@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files: ./roles/myplaybook/vars_file.yaml
+  roles: 
+    - role: myplaybook
+    
+        

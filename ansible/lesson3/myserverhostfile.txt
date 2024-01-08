@@ -1,0 +1,7 @@
+[snc]
+mysnc ansible_host=192.168.129.34 ansible_user=ubuntu
+[snc-public]
+mysnc-public ansible_host=18.222.177.199 ansible_user=ubuntu
+[server:children]
+snc
+snc-public
