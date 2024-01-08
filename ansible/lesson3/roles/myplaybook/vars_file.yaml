@@ -2,5 +2,3 @@
 mykey_secret: "c439b14891ca4a1bc9e16acc14651e1e13cb4d87959ceb08e5d16ffa22a12714"
 mykey_username:  "api_141a6a75f9eeacf04"
 mypce_hostname: "jds-demo-snc.poc.segmentationpov.com"
-mypce_port: 8443
-mypce_org_id: 1 
