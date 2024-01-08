@@ -23,9 +23,8 @@
       ansible.builtin.lineinfile: 
         line: "{{ inventory_hostname }}"
         line: "{{ hostvars[inventory_hostname]['ansible_facts'] }}"
-
-        path: /var/www/html/myindex.html/html/myindex.html
-
+        path: /var/www/html/myindex.html
+        
     - name: start service that you specify
       become: yes
       ansible.builtin.service: 
