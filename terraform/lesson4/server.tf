@@ -51,28 +51,35 @@ resource "aws_instance" "server" {
 resource "null_resource" "hostsfile" {
   provisioner "local-exec" {
     command = "echo [snc] > ${var.hostfilename}"
-    }
-    
-    provisioner "local-exec" {
+  }
+
+  provisioner "local-exec" {
     command = "echo mysnc ansible_host=${aws_instance.server.private_ip} ansible_user=ubuntu >> ${var.hostfilename}"
-    }
-    provisioner "local-exec" {
+  }
+  provisioner "local-exec" {
     command = "echo [snc-public] >> ${var.hostfilename}"
-    }
-    provisioner "local-exec" {
+  }
+  provisioner "local-exec" {
     command = "echo mysnc-public ansible_host=${aws_instance.server.public_ip} ansible_user=ubuntu >> ${var.hostfilename}"
-    }
-    provisioner "local-exec" {
+  }
+  provisioner "local-exec" {
     command = "echo [server:children] >> ${var.hostfilename}"
-    }
-    provisioner "local-exec" {
+  }
+  provisioner "local-exec" {
     command = "echo snc >> ${var.hostfilename}"
-    }
-    provisioner "local-exec" {
+  }
+  provisioner "local-exec" {
     command = "echo snc-public >> ${var.hostfilename}"
-    }
-  
+  }
 
   depends_on = [aws_instance.server]
 }
 
+
+# resource "null_resource" "buildwebserver" {
+#   provisioner "local-exec" {
+#     command = "ansible-playbook -u ubuntu -i ${var.hostfilename} ../../ansible/lesson2/playbook3.yaml -e 'service=nginx'"
+#   }
+
+#   depends_on = [null_resource.hostsfile]
+# }
