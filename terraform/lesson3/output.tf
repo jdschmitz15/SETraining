@@ -21,16 +21,16 @@ output "Label_Name" {
   value = illumio-core_label.example.value
 }
 
-output "Managed_Href" {
-  value = illumio-core_managed_workload.example.href
-}
+// output "Managed_Href" {
+//   value = illumio-core_managed_workload.example.href
+// }
 
-output "Managed_Name" {
-  value = illumio-core_managed_workload.example.name
-}
-output "Managed_PublicIP" {
-  value = illumio-core_managed_workload.example.public_ip
-}
+// output "Managed_Name" {
+//   value = illumio-core_managed_workload.example.name
+// }
+// output "Managed_PublicIP" {
+//   value = illumio-core_managed_workload.example.public_ip
+// }
 
 output "UMWL_Href" {
   value = illumio-core_unmanaged_workload.example.href

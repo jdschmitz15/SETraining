@@ -6,10 +6,10 @@
       ansible.builtin.debug:
         msg: "{{hostvars[inventory_hostname]['ansible_default_ipv4']}}"
 
-    - name: debug ansible facts to the screen.
+    - name: debug ansible facts to get all devices on instance.
       ansible.builtin.debug:
         msg: "{{hostvars[inventory_hostname].ansible_devices}}."
 
-    - name: debug ansible facts to the screen.
+    - name: debug ansible facts using a variable.
       ansible.builtin.debug:
         var: "{{hostvars[inventory_hostname]}}.{{ variable }}"
