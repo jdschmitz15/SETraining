@@ -1,4 +1,0 @@
-port       = "8443"
-pce_url    = "jds-demo-snc.poc.segmentationpov.com"
-api_user   = "api_1880eff110c80c117"
-api_secret = "f43dd1607cec01688d9438b60090e1aab9a3b400b0d4a7b93f2b9ef82b8c7cdf"

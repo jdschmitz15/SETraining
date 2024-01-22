@@ -76,10 +76,10 @@ resource "null_resource" "hostsfile" {
 }
 
 
-# resource "null_resource" "buildwebserver" {
-#   provisioner "local-exec" {
-#     command = "ansible-playbook -u ubuntu -i ${var.hostfilename} ../../ansible/lesson2/playbook3.yaml -e 'service=nginx'"
-#   }
+resource "null_resource" "buildwebserver" {
+  provisioner "local-exec" {
+    command = "ansible-playbook -u ubuntu -i ${var.hostfilename} ../../ansible/lesson2/playbook3.yaml -e 'package=nginx'"
+  }
 
-#   depends_on = [null_resource.hostsfile]
-# }
+  depends_on = [null_resource.hostsfile]
+}
